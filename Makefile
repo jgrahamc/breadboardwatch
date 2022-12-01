@@ -9,7 +9,7 @@ CFLAGS += -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Wall
 CFLAGS += -Wa,-adhlns=$(<:.c=.lst) -mmcu=$(MCU) -I.
 #CFLAGS += -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r16 -ffixed-r17 
 
-AVRDUDE = avrdude -v -p attiny84 -c avrisp2 -P usb -B 200
+AVRDUDE = avrdude -v -p attiny84 -c avrisp -P /dev/cu.usbmodem14501 -b 19200 -B 256
 
 %.o : %.c
 	avr-gcc -c $(CFLAGS) $< -o $@ 
@@ -21,7 +21,7 @@ all: $(OBJ)
 
 rfuse:
 	$(AVRDUDE) -U lfuse:r:-:h -U hfuse:r:-:h
-	
+
 wfuse:
 	$(AVRDUDE) -U lfuse:w:0xe6:m -U hfuse:w:0xd7:m -U efuse:w:0xff:m
 
