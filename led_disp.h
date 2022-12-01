@@ -1,12 +1,12 @@
 #ifndef __LED_DISP_H__
 #define __LED_DISP_H__
 
-#define segA _BV(2)
-#define segB _BV(0)
+#define segA _BV(0)
+#define segB _BV(1)
 #define segC _BV(6)|_BV(10)
 #define segD _BV(3)
 #define segE _BV(5)|_BV(7)
-#define segF _BV(1)
+#define segF _BV(2)
 #define segG _BV(4)
 
 #define cat1 6
